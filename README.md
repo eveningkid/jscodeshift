@@ -1,3 +1,10 @@
+## Why?
+`jscodeshift` npm module isn't ES5-compatible.
+
+## What did I change?
+- `src/getParser.js`: set `flow` as default parser
+- `parser/flow.js`: now require `flow-parser` using electron parent process
+
 # jscodeshift [![Build Status](https://travis-ci.org/facebook/jscodeshift.svg?branch=master)](https://travis-ci.org/facebook/jscodeshift)
 
 jscodeshift is a toolkit for running codemods over multiple JS files.
@@ -140,11 +147,11 @@ You can collect even more stats via the `stats` function as explained above.
 
 ### Parser
 
-The transform can let jscodeshift know with which parser to parse the source 
+The transform can let jscodeshift know with which parser to parse the source
 files (and features like templates).
 
-To do that, the transform module can export `parser`, which can either be one 
-of the strings `"babel"`, `"babylon"`, or `"flow"`, or it can be a parser 
+To do that, the transform module can export `parser`, which can either be one
+of the strings `"babel"`, `"babylon"`, or `"flow"`, or it can be a parser
 object that is compatible with recast.
 
 For example:
@@ -317,7 +324,7 @@ This can be done by passing config options to [recast].
 .toSource({quote: 'single'}); // sets strings to use single quotes in transformed code.
 ```
 
-You can also pass options to recast's `parse` method by passing an object to 
+You can also pass options to recast's `parse` method by passing an object to
 jscodeshift as second argument:
 
 ```js
